@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Data Dictionary</title>
+        <style><%= Rouge::Themes::Base16.mode(:light).render(scope: '.sql') %></style>
+        <style><%= File.read("lib/style.css") %></style>
+    </head>
+    <body>
+
+    <h1><a href="<%= explore_url %>"><%= @explore.label %></a></h1>
+
+    <% @fields.group_by{|f| f[:view_label] }.each do |view_label, view_fields| %>
+        <h2><%= view_label %></h2>
+        <table>
+        <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>SQL</th>
+        </tr>
+        <% view_fields.each do |field| %>
+        <tr>
+          <td><strong><a href="<%= explore_field_url field %>"><%= field.label_short %></a></strong></td>
+          <td><%= field.type.titleize %></td>
+          <td>
+            <%= field.description %>
+            <% if field.enumerations %>
+              <div class="enums">
+                <% field.enumerations.each do |enum| %>
+                  <span class="token"><%= enum.label %></span>
+                <% end %>
+              </div>
+            <% end %>
+          </td>
+          <td><code class="sql"><%= sql_highlight field.sql if field.sql %></code></td>
+        </tr>
+        <% end %>
+        </table>
+    <% end %>
+
+    </body>
+</html>
