@@ -6,6 +6,11 @@ require 'active_support/inflector'
 
 class DataDictionary
 
+    def initialize(model_name, explore_name)
+      @model_name = model_name
+      @explore_name = explore_name
+    end
+
     def self.sdk
       LookerSDK::Client.new(
         :client_id => ENV['LOOKER_CLIENT_ID'],
@@ -22,7 +27,7 @@ class DataDictionary
         return
       end
 
-      @explore = self.class.sdk.lookml_model_explore("thelook", "order_items")
+      @explore = self.class.sdk.lookml_model_explore(@model_name, @explore_name)
       @fields = @explore.fields.to_h.values.flatten
       ERB.new(File.read(File.join("lib", "page.html.erb"))).result(binding)
     end

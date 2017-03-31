@@ -42,7 +42,7 @@ LOOKER_CLIENT_SECRET=1234567
 Then run the tool:
 
 ```
-bundle exec bin/data-dictionary-builder
+bundle exec bin/data-dictionary-builder my_model_name my_explore_name
 ```
 
 This will export a set of pages containing your data dictionary!

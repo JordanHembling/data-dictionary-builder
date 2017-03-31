@@ -8,7 +8,16 @@ Dotenv.load
 
 require_relative '../lib/data_dictionary'
 
-html = DataDictionary.new.render!
-File.write("dictionary.html", html)
+(model_name, explore_name) = ARGV
+if model_name && explore_name
 
-puts "Dictionary written to dictionary.html"
+  html = DataDictionary.new(model_name, explore_name).render!
+
+  if html
+    File.write("dictionary.html", html)
+    puts "Dictionary for model #{model_name} and explore #{explore_name} written to dictionary.html"
+  end
+
+else
+  puts "You must provide a model name and explore name."
+end
