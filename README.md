@@ -31,7 +31,11 @@ bundle
 Run the builder with your credentials:
 
 ```
-LOOKER_CLIENT_ID=1234567 LOOKER_CLIENT_SECRET=1234567 LOOKER_ENDPOINT=https://mycompany.looker.com/api/3.0 LOOKER_URL=https://mycompany.looker.com ./bin/data-dictionary-builder
+LOOKER_CLIENT_ID=1234567 \
+LOOKER_CLIENT_SECRET=1234567 \
+LOOKER_ENDPOINT=https://mycompany.looker.com:1999/api/3.0 \
+LOOKER_URL=https://mycompany.looker.com \
+./bin/data-dictionary-builder
 ```
 
 This will export a set of pages containing your data dictionary!
