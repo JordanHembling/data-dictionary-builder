@@ -28,10 +28,21 @@ Make sure everything's installed:
 bundle
 ```
 
-Run the builder with your credentials:
+Your credentials and configuration can be provided by environment variables.
+
+For your convenience you can create a text file called `.env` in `data-dictionary-builder` folder to specify the configuraion as well. Here's a sample `.env`:
 
 ```
-LOOKER_CLIENT_ID=1234567 LOOKER_CLIENT_SECRET=1234567 LOOKER_ENDPOINT=https://mycompany.looker.com/api/3.0 LOOKER_URL=https://mycompany.looker.com ./bin/data-dictionary-builder
+LOOKER_URL=https://mycompany.looker.com
+LOOKER_ENDPOINT=https://mycompany.looker.com/api/3.0
+LOOKER_CLIENT_ID=1234567
+LOOKER_CLIENT_SECRET=1234567
+```
+
+Then run the builder tool:
+
+```
+bundle exec bin/data-dictionary-builder
 ```
 
 This will export a set of pages containing your data dictionary!

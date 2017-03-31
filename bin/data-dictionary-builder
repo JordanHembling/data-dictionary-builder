@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
 
+require 'rubygems'
+
+# Load environment from .env file if present
+require 'dotenv'
+Dotenv.load
+
 require_relative '../lib/data_dictionary'
 
 html = DataDictionary.new.render!
