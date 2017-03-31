@@ -10,3 +10,5 @@ require_relative '../lib/data_dictionary'
 
 html = DataDictionary.new.render!
 File.write("dictionary.html", html)
+
+puts "Dictionary written to dictionary.html"

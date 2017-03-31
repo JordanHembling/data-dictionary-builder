@@ -17,6 +17,11 @@ class DataDictionary
     end
 
     def render!
+      unless self.class.sdk.respond_to?(:lookml_model_explore)
+        puts "Could not connect to Looker. Are your credentials correct?"
+        return
+      end
+
       @explore = self.class.sdk.lookml_model_explore("thelook", "order_items")
       @fields = @explore.fields.to_h.values.flatten
       ERB.new(File.read(File.join("lib", "page.html.erb"))).result(binding)
