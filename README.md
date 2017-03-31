@@ -39,7 +39,7 @@ LOOKER_CLIENT_ID=1234567
 LOOKER_CLIENT_SECRET=1234567
 ```
 
-Then run the builder tool:
+Then run the tool:
 
 ```
 bundle exec bin/data-dictionary-builder
